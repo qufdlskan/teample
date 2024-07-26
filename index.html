@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>남성의류 파는 사이트</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="slideshow.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // slideshow.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    let slideIndex = 0;
+    const slides = document.querySelector('.slides');
+    const slideImages = document.querySelectorAll('.slides img');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    function showSlides() {
+        slides.style.transform = `translateX(-${slideIndex * 500}px)`;
+    }
+
+    function plusSlides(direction) {
+        if (direction === -1) {
+            slideIndex = (slideIndex <= 0) ? (slideImages.length - 1) : (slideIndex - 1);
+        } else {
+            slideIndex = (slideIndex >= slideImages.length - 1) ? 0 : (slideIndex + 1);
+        }
+        showSlides();
+    }
+
+    prevBtn.addEventListener('click', () => {
+        plusSlides(-1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        plusSlides(1);
+    });
+
+    // 자동 슬라이드
+    setInterval(() => {
+        plusSlides(1);
+    }, 3000); // 3초마다 다음 이미지로 넘어감
+});
+
+    </script>
+    <style>
+        /* 전체 페이지 스타일 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+/* 네비게이션 바 스타일 */
+.header_gnb ul { 
+    list-style-type: none;
+    padding: 50;
+    margin-top: 5;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #444;
+}
+
+.header_gnb ul li {
+    margin: 10 20px;
+}
+
+.header_gnb ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 0px 15px;
+}
+
+.header_gnb ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* 헤더 스타일 */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+.header h1 {
+    font-size: 40px;
+    margin: 10px 0;
+    margin-right: 800px;
+}
+
+.header p {
+    font-size: 14px;
+    margin: 5px 0;
+
+}
+.header .nav {
+    font-size: 18px;
+    margin: 5px 0;
+    margin-right: 800px;
+}
+.header img{
+    float: left;
+    margin-left: 700px;
+    margin-top: 20px;
+}
+
+.login {
+    display: inline-block;
+    padding-right: 20px;
+    padding-left: 20px;
+    float: right;
+}
+
+
+
+
+/* 메인 섹션 스타일 */
+.main {
+    text-align: center;
+    margin: 20px;
+}
+
+/* 슬라이드 쇼 스타일 */
+.slideshow-container {
+    position: relative;
+    max-width: 500px; /* 슬라이드 쇼의 최대 너비 */
+    margin: 0 auto; /* 가운데 정렬 */
+    overflow: hidden; /* 넘치는 부분 잘라내기 */
+    border: 1px solid #ccc; /* 테두리 추가 (선택적) */
+}
+
+.slides {
+    display: flex; /* 이미지들을 가로로 배열 */
+    transition: transform 0.5s ease; /* 슬라이드 전환 효과 */
+}
+
+.slides img {
+    width: 500px; /* 이미지 너비 고정 */
+    height: auto; /* 높이 자동 조정 */
+    object-fit: cover; /* 이미지가 영역을 채우도록 설정 */
+}
+
+/* 버튼 스타일링 */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    user-select: none;
+    z-index: 100;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* 상품 목록 스타일 */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.product {
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+}
+
+
+/* 슈퍼딜 세일 목록 스타일 */
+.sale-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.sale {
+    width: 250px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.sale img {
+    width: 100%;
+    height: auto;
+}
+
+.sale-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.sale-price {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* 푸터 스타일 */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer nav {
+    margin-bottom: 10px;
+}
+
+footer nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer nav a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+    </style>
+</head>
+<body>  
+    <header class="header">
+        <a href="index.html"><img src="https://postfiles.pstatic.net/MjAyNDA3MjVfMTkx/MDAxNzIxODk3MTYzNDIw.-oRhg4tntG-kBg9VFmkqWssYsTmSWYwOFUWCBKwwuiIg.8YNuUgqdHH4uJ4B39EPcMfpZewoFz8S3DC8leSAVqbYg.JPEG/Preview_(1).jpg?type=w966" alt="하야새 로고"></a>
+        <h1>하야새</h1>
+        <p class="nav">강가의 새처럼 자유롭고 조화로운곳</p>
+        <div class="header_user">
+            <a href="register.html"><p class="login">회원 가입</p></a>
+            <a href="login.html"><p class="login">로그인</p></a>
+        </div>
+        <div class="header_gnb">
+            <ul>
+                <li><a href="best.html">베스트</a></li>
+                <li><a href="new.html">신상</a></li>
+                <li><a href="바지.html">바지</a></li>
+                <li><a href="상의.html">상의</a></li>
+                <li><a href="외투.html">외투</a></li>
+                <li><a href="신발.html">신발</a></li>
+                <li><a href="시계.html">시계</a></li>
+                <li><a href="사이트 소개.html">사이트 소개</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="slideshow-container">
+            <div class="slides">
+                <img src="https://postfiles.pstatic.net/MjAyNDA3MjVfMTYg/MDAxNzIxODkzNTYxNTIx.LnMa3ycpP95MpWNQLErVotxDWuhtfYdOtjnzi1vFDSEg.l1xFN5dTnnRjTWmild1IyID_xr4c2WVdpxgsYcbJzB4g.JPEG/68b0662a-f019-472d-b1f8-36c2ac372fed.jpg?type=w966" alt="이미지1">
+                <img src="https://postfiles.pstatic.net/MjAyNDA3MjVfMTM2/MDAxNzIxODk1MjE0NDE4.0tXCcBr4XX5RaxGyZv81knSSockVFcDasiNK7tOFccwg.20mq0ZqiyxthkKUfLuCWbJPigD_zPB2vm4EfrIkO1j8g.JPEG/Bonsir_Men%27s_new_autumn_Men%27s_large_loose_fake_two-piece_jacket_autumn_coupl.jpg?type=w966" alt="이미지2">
+                <img src="https://postfiles.pstatic.net/MjAyNDA3MjVfOTIg/MDAxNzIxODk1MjE0NDE5.878MAvAUZpHhGYfNfiiW8IhDGT1qyMlMp5dVsqOWN88g.NZ9OWMPFl23bhQscNpf6PJnzUMXmTLBGQuFFciQRoEAg.JPEG/Men_Long_Sleeved_Shirt_Comfortable_Blouses_Casual_Loose_Breasted_Solid_Color.jpg?type=w966" alt="이미지3">
+                <!-- 추가적으로 필요한 이미지들 -->
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <h2>슈퍼딜 세일 전 가격 50% 할인</h2>
+        <div class="sale-list">
+            <a href="" class="sale">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEpePv4NkhN5aMDLl8Yljkn8QMymeXyFkPCA&usqp=CAU" width="250" height="150">
+                <div class="sale-name">옷</div>
+                <div class="sale-price">49,000</div>
+            </a>
+            <a href="" class="sale">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEpePv4NkhN5aMDLl8Yljkn8QMymeXyFkPCA&usqp=CAU" width="250" height="150">
+                <div class="sale-name">옷</div>
+                <div class="sale-price">49,000</div>
+            </a>
+            <a href="" class="sale">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEpePv4NkhN5aMDLl8Yljkn8QMymeXyFkPCA&usqp=CAU" width="250" height="150">
+                <div class="sale-name">옷</div>
+                <div class="sale-price">49,000</div>
+            </a>
+            <!-- 추가적인 슈퍼딜 세일 아이템들 추가 -->
+        </div>
+
+        <h3>★최저가 상품들★</h3>
+        <div class="product-list">
+            <a href="" class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEpePv4NkhN5aMDLl8Yljkn8QMymeXyFkPCA&usqp=CAU" width="200" height="300">
+                <div class="product-name">옷</div>
+                <div class="product-price">49,000</div>
+            </a>
+            <a href="" class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEpePv4NkhN5aMDLl8Yljkn8QMymeXyFkPCA&usqp=CAU" width="200" height="300">
+                <div class="product-name">옷</div>
+                <div class="product-price">49,000</div>
+            </a>
+            <a href="" class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEpePv4NkhN5aMDLl8Yljkn8QMymeXyFkPCA&usqp=CAU" width="200" height="300">
+                <div class="product-name">옷</div>
+                <div class="product-price">49,000</div>
+            </a>
+            <!-- 추가적인 상품들 추가 -->
+        </div>
+    </div>
+
+
+    <footer>
+        <nav>
+            <a href='https://mail.google.com/mail/u/0/?ogbl#inbox?compose=new' target='_blank'>Blog</a> |
+            <a href='https://github.com/qufdlskan' target='_blank'>Github</a>
+        </nav>
+        <p>
+            <span>저자 : qufdlskan</span><br/>
+            <span>이메일 : qufdlskan3015@gmail.com</span><br/>
+            <span>Copyright 2020. cocoder. All Rights Reserved.</span>
+        </p>
+    </footer>
+
+</body>
+</html>
